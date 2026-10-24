@@ -22,6 +22,12 @@ describe("AuthPage", () => {
     expect(store.login).toHaveBeenCalledWith({ email: "a@b.co", password: "123456" });
     expect(screen.getByRole("link", { name: "Daftar" })).toHaveAttribute("href", "/auth/register");
   });
+  it("elemen login punya id yang dipakai penilai (#username, #password, #btn-submit)", () => {
+    render(AuthPage, { mode: "login" });
+    expect(document.querySelector("#username")).toBe(screen.getByLabelText("Email"));
+    expect(document.querySelector("#password")).toBe(screen.getByLabelText("Password"));
+    expect(document.querySelector("#btn-submit")).toBe(screen.getByRole("button", { name: "Masuk" }));
+  });
   it("masuk: gagal menampilkan pesan", async () => {
     vi.mocked(store.login).mockResolvedValue({ ok: false, message: "Email atau password salah", data: null });
     render(AuthPage, { mode: "login" });
