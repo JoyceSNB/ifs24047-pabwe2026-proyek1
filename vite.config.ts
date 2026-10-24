@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
       sveltekit({
         inlineStyleThreshold: 100000,
         // Prefix env runtime diganti agar tidak bentrok dengan variabel server seperti APP_URL.
-        adapter: adapterBun({ envPrefix: "RESEPFE_", serverOptions: { port } }),
+        adapter: adapterBun({ envPrefix: "RESEPFE_", precompress: true, serverOptions: { port } }),
       }),
       tailwindcss(),
       svelteTesting(),
