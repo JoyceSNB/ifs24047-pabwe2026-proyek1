@@ -33,16 +33,16 @@
     <form onsubmit={submit} class="space-y-4">
       {#if isRegister}
         <label class="block text-sm font-medium">Nama
-          <input id="name" bind:value={name} required maxlength="60" class={fieldClass} />
+          <input bind:value={name} required maxlength="60" class={fieldClass} />
         </label>
       {/if}
       <label class="block text-sm font-medium">Email
-        <input id="username" bind:value={email} type="email" required class={fieldClass} />
+        <input bind:value={email} type="email" required class={fieldClass} />
       </label>
       <label class="block text-sm font-medium">Password
-        <input id="password" bind:value={password} type="password" required minlength="6" class={fieldClass} />
+        <input bind:value={password} type="password" required minlength="6" class={fieldClass} />
       </label>
-      <button id="btn-submit" type="submit" disabled={busy} class="w-full rounded-lg bg-chili px-5 py-2 font-medium text-white disabled:opacity-60">
+      <button type="submit" disabled={busy} class="w-full rounded-lg bg-chili px-5 py-2 font-medium text-white disabled:opacity-60">
         {busy ? "Memproses..." : isRegister ? "Daftar" : "Masuk"}
       </button>
     </form>
