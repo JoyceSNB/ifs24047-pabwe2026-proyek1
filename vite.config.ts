@@ -19,6 +19,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       sveltekit({
+        inlineStyleThreshold: 100000,
+        output: { bundleStrategy: "single" },
         adapter: onVercel
           ? adapterVercel()
           : adapterBun({

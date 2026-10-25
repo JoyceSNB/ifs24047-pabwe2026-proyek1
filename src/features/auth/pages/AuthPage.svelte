@@ -34,7 +34,7 @@
 
 <main class="flex min-h-screen items-center justify-center px-4 py-10">
   <div class="w-full max-w-sm rounded-2xl border border-line bg-paper p-8 shadow-sm">
-    <img src="/logo.png" alt="" width="114" height="96" fetchpriority="high" class="mx-auto h-24 w-auto" />
+    <img src="/logo.webp" alt="" width="114" height="96" fetchpriority="high" class="mx-auto h-24 w-auto" />
     <p class="mt-2 text-center font-display text-xl font-bold text-chili">Koleksi Resep</p>
     <h1 class="mt-5 text-center text-2xl font-bold">{isRegister ? "Daftar" : "Masuk"}</h1>
     <p class="mb-5 mt-1 text-center text-sm text-muted">

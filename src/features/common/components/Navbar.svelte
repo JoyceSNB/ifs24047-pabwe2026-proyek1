@@ -10,7 +10,7 @@
 <header class="border-b border-line bg-paper">
   <nav class="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
     <a href="/" class="flex items-center gap-2 font-display text-xl font-bold text-chili">
-      <img src="/logo.png" alt="" class="h-9 w-auto" /> Koleksi Resep
+      <img src="/logo.webp" alt="" width="43" height="36" class="h-9 w-auto" /> Koleksi Resep
     </a>
     {#if $user}
       <div class="flex items-center gap-1 sm:gap-2">
