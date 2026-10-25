@@ -1,5 +1,6 @@
 import { sveltekit } from "@sveltejs/kit/vite";
 import adapterBun from "@sveltejs/adapter-bun";
+import adapterVercel from "@sveltejs/adapter-vercel";
 import tailwindcss from "@tailwindcss/vite";
 import { svelteTesting } from "@testing-library/svelte/vite";
 import { defineConfig, loadEnv } from "vite";
@@ -11,14 +12,19 @@ export default defineConfig(({ mode }) => {
   // Build produksi (server Delcom) memakai backend yang sudah di-deploy; dev/test memakai localhost.
   const defaultApi = mode === "production" ? "https://ifs24047-pabwe2026-proyek1-backend.s1if.cloud" : "http://localhost:8000";
   const apiBase = (process.env.VITE_API_BASEURL || env.VITE_API_BASEURL || defaultApi).replace(/\/$/, "");
+  // Vercel mengisi VERCEL=1 saat build. Di sana tidak ada runtime Bun, jadi
+  // dipakai adapter-vercel. Di Delcom/Jenkins/lokal tetap adapter-bun.
+  const onVercel = !!process.env.VERCEL;
 
   return {
     plugins: [
       sveltekit({
-        adapter: adapterBun({
-          envPrefix: "SVELTEKIT_",
-          serverOptions: { port },
-        }),
+        adapter: onVercel
+          ? adapterVercel()
+          : adapterBun({
+              envPrefix: "SVELTEKIT_",
+              serverOptions: { port },
+            }),
       }),
       tailwindcss(),
       svelteTesting(),
