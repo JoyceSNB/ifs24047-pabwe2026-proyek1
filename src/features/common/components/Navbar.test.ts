@@ -23,7 +23,7 @@ describe("Navbar", () => {
     render(Navbar);
     expect(screen.getByRole("link", { name: "Beranda" })).toHaveAttribute("href", "/");
     expect(screen.getByRole("link", { name: /Tambah Resep/ })).toHaveAttribute("href", "/recipes/new");
-    expect(screen.getByRole("link", { name: "Profil" })).toHaveAttribute("href", "/profile");
+    expect(screen.getByRole("link", { name: "Profil Chef Demo" })).toHaveAttribute("href", "/profile");
     expect(screen.getByText("Chef Demo")).toBeInTheDocument();
     expect(screen.getByText("C")).toBeInTheDocument();
   });
