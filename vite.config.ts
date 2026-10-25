@@ -16,8 +16,8 @@ export default defineConfig(({ mode }) => {
     plugins: [
       sveltekit({
         inlineStyleThreshold: 100000,
-        // Prefix env runtime diganti agar tidak bentrok dengan variabel server seperti APP_URL.
-        adapter: adapterBun({ envPrefix: "RESEPFE_", precompress: true, serverOptions: { port } }),
+        // Adapter bawaan: port dibaca dari variabel PORT yang ditulis Delcom ke .env.
+        adapter: adapterBun({ precompress: true }),
       }),
       tailwindcss(),
       svelteTesting(),
