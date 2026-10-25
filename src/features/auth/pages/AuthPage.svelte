@@ -11,6 +11,11 @@
   let password = $state("");
   let busy = $state(false);
   const isRegister = $derived(mode === "register");
+  const ids = $derived(
+    isRegister
+      ? { email: "register-email-input", password: "register-password-input", submit: "register-submit-button" }
+      : { email: "login-email-input", password: "login-password-input", submit: "login-submit-button" }
+  );
 
   async function submit(e: SubmitEvent) {
     e.preventDefault();
@@ -42,16 +47,16 @@
             bind:value={name} required maxlength="60" class={fieldClass} />
         </label>
       {/if}
-      <label for="{mode}-email-input" class="block text-sm font-medium">Email
-        <input id="{mode}-email-input" name="email" type="email" autocomplete="email"
+      <label for={ids.email} class="block text-sm font-medium">Email
+        <input id={ids.email} name="email" type="email" autocomplete="email"
           bind:value={email} required class={fieldClass} />
       </label>
-      <label for="{mode}-password-input" class="block text-sm font-medium">Password
-        <input id="{mode}-password-input" name="password" type="password"
+      <label for={ids.password} class="block text-sm font-medium">Password
+        <input id={ids.password} name="password" type="password"
           autocomplete={isRegister ? "new-password" : "current-password"}
           bind:value={password} required minlength="6" class={fieldClass} />
       </label>
-      <button id="{mode}-submit-button" type="submit" disabled={busy}
+      <button id={ids.submit} type="submit" disabled={busy}
         class="w-full rounded-lg bg-chili px-5 py-2 font-medium text-white disabled:opacity-60">
         {busy ? "Memproses..." : isRegister ? "Daftar" : "Masuk"}
       </button>
