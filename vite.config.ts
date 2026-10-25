@@ -16,9 +16,10 @@ export default defineConfig(({ mode }) => {
     plugins: [
       sveltekit({
         inlineStyleThreshold: 100000,
-        // Port diambil dari APP_PORT saat build (diisi server Delcom). Tanpa envPrefix,
-        // karena server menambah variabel APP_* lain (mis. APP_URL) yang membuat adapter gagal start.
+        // envPrefix dibuat SVELTEKIT_ agar variabel APP_* dari server Delcom (mis. APP_URL)
+        // tidak memicu error di adapter. Port diambil dari APP_PORT saat build.
         adapter: adapterBun({
+          envPrefix: "SVELTEKIT_",
           serverOptions: { port },
         }),
       }),
