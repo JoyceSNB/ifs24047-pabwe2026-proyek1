@@ -16,8 +16,11 @@ export default defineConfig(({ mode }) => {
     plugins: [
       sveltekit({
         inlineStyleThreshold: 100000,
-        // Adapter bawaan: port dibaca dari variabel PORT yang ditulis Delcom ke .env.
-        adapter: adapterBun({ precompress: true }),
+        // Port server produksi dibaca dari APP_PORT (sesuai praktikum 6).
+        adapter: adapterBun({
+          envPrefix: "APP_",
+          serverOptions: { port },
+        }),
       }),
       tailwindcss(),
       svelteTesting(),
