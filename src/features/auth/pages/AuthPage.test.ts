@@ -46,10 +46,11 @@ describe("AuthPage", () => {
 
   it("login: id elemen dan autocomplete current-password", () => {
     render(AuthPage, { mode: "login" });
-    expect(screen.getByLabelText("Email")).toHaveAttribute("id", "login-email-input");
-    expect(screen.getByLabelText("Password")).toHaveAttribute("id", "login-password-input");
+    expect(screen.getByRole("main")).toBeInTheDocument();
+    expect(screen.getByLabelText("Email")).toHaveAttribute("id", "username");
+    expect(screen.getByLabelText("Password")).toHaveAttribute("id", "password");
     expect(screen.getByLabelText("Password")).toHaveAttribute("autocomplete", "current-password");
-    expect(screen.getByRole("button", { name: "Masuk" })).toHaveAttribute("id", "login-submit-button");
+    expect(screen.getByRole("button", { name: "Masuk" })).toHaveAttribute("id", "btn-submit");
   });
 
   it("daftar: id elemen dan autocomplete new-password", () => {

@@ -14,7 +14,7 @@
   const ids = $derived(
     isRegister
       ? { email: "register-email-input", password: "register-password-input", submit: "register-submit-button" }
-      : { email: "login-email-input", password: "login-password-input", submit: "login-submit-button" }
+      : { email: "username", password: "password", submit: "btn-submit" }
   );
 
   async function submit(e: SubmitEvent) {
@@ -32,7 +32,7 @@
   <meta name="description" content="Koleksi Resep: simpan dan kelola resep masakanmu." />
 </svelte:head>
 
-<div class="flex min-h-screen items-center justify-center px-4 py-10">
+<main class="flex min-h-screen items-center justify-center px-4 py-10">
   <div class="w-full max-w-sm rounded-2xl border border-line bg-paper p-8 shadow-sm">
     <img src="/logo.png" alt="" width="96" height="96" class="mx-auto h-24 w-auto" />
     <p class="mt-2 text-center font-display text-xl font-bold text-chili">Koleksi Resep</p>
@@ -69,4 +69,4 @@
       {/if}
     </p>
   </div>
-</div>
+</main>
