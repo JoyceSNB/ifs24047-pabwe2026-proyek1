@@ -16,6 +16,9 @@ export default defineConfig(({ mode }) => {
     plugins: [
       sveltekit({
         inlineStyleThreshold: 100000,
+        // Gabungkan seluruh JS menjadi satu file (dan CSS satu file) agar browser tidak
+        // meminta belasan chunk sekaligus; server hosting kadang membalas 500 pada sebagian chunk.
+        output: { bundleStrategy: "single" },
         // envPrefix dibuat SVELTEKIT_ agar variabel APP_* dari server Delcom (mis. APP_URL)
         // tidak memicu error di adapter. Port diambil dari APP_PORT saat build.
         adapter: adapterBun({
